@@ -18,8 +18,8 @@ pipeline {
            // Checkout to a specific branch in your repo.
            sh "git checkout main"
           }
-       }
-    }
+      }
+}
     stage('Install Dependencies') {
             steps {
                 sh 'sudo npm install'
@@ -48,4 +48,4 @@ pipeline {
             }
         }
     }
-}
+
