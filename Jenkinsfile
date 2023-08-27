@@ -7,16 +7,24 @@ pipeline {
 
     stages {
         stage('Checkout') {
-      steps {
-        script {
-           git credentialsId: 'gazal94', url: 'https://github.com/gazal1994/quiz-project.git'
-           sh "ls -lart ./*" 
-           sh "git branch -a"
-           sh "git checkout main"
-          }
-       }
-    }
+            steps {
+                script {
+                    // If you have a specific Git installation configured in Jenkins, use its name here
+                    def gitInstallation = 'Git'
+                    def gitUrl = 'https://github.com/gazal1994/quiz-project.git'
+                    def credentialsId = 'gazal94'  // Update with the correct credentials ID
 
+                    // Configure Git tool
+                    env.GIT_HOME = tool name: gitInstallation, type: 'hudson.plugins.git.GitTool', installations: [[$class: 'hudson.plugins.git.GitTool', name: gitInstallation]]
+                    env.PATH = "${env.GIT_HOME}/bin:${env.PATH}"
+
+                    // Checkout the repository using the provided credentials
+                    git credentialsId: credentialsId, url: gitUrl
+                    sh 'git log'  // Print commit history
+                    sh 'ls -lart' // List files in the workspace
+                }
+            }
+        }
         stage('Install Dependencies') {
             steps {
                 sh 'sudo npm install'
