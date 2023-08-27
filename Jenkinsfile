@@ -1,8 +1,9 @@
 pipeline {
     agent any
 
-    environment {
-        GIT_HOME = tool name: 'Git', type: 'hudson.plugins.git.GitTool', installations: [[$class: 'hudson.plugins.git.GitTool', name: 'Git']]
+
+   environment {
+        GIT_HOME = tool name: 'Default', type: 'hudson.plugins.git.GitTool'
         PATH = "${GIT_HOME}/bin:${PATH}"
         GIT_CREDENTIALS = 'gazal94'  // Update with the correct credentials ID
         GIT_URL = 'https://github.com/gazal1994/quiz-project.git'
