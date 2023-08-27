@@ -12,7 +12,7 @@ pipeline {
            git credentialsId: 'gazal94', url: 'https://github.com/gazal1994/quiz-project.git'
            sh "ls -lart ./*" 
            sh "git branch -a"
-           sh "git checkout main"
+           sh "git checkout master"
           }
        }
     }
