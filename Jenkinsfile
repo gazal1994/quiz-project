@@ -9,7 +9,6 @@ environment {
         stage('Checkout') {
             steps {
                 script {
-                    // Checkout the code from the specified branch using Git credentials
                     checkout([$class: 'GitSCM', 
                               branches: [[name: '*/main']], 
                               userRemoteConfigs: [[url: 'https://github.com/gazal1994/quiz-project.git',
