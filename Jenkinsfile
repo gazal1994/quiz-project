@@ -16,7 +16,7 @@ pipeline {
             steps {
                 script {
                     // Checkout the repository using the provided credentials and Git installation
-                    git credentialsId: env.GIT_CREDENTIALS, url: env.GIT_URL
+                    git  branch: 'main', credentialsId: env.GIT_CREDENTIALS, url: env.GIT_URL
                     sh 'git log'  // Print commit history
                     sh 'ls -lart' // List files in the workspace
                 }
