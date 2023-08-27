@@ -33,8 +33,8 @@ environment {
             steps {
                 // SSH into the server and copy build files
                 sshagent(credentials: ['your-ssh-credentials-id']) {
-                    sh 'ssh server "mkdir -p /react"'
-                    sh 'scp -r build server:/react/'
+                    sh 'ssh -o StrictHostKeyChecking=no gazal94@10.0.1.70 "mkdir -p /home/gazal94/react"'
+                    sh 'scp -o StrictHostKeyChecking=no -r build gazal94@10.0.1.70:/home/gazal94/react/'
                 }
             }
         }
